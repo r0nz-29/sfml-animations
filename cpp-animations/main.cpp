@@ -3,8 +3,8 @@
 #include "utils.hpp"
 #include "cell.hpp"
 
-#define N 50
-#define NUM_OBSTACLES 800
+#define N 40
+#define NUM_OBSTACLES 400
 
 using namespace std;
 
@@ -21,7 +21,7 @@ int main()
 	for (int i = 0; i < N; i++)
 		for (int j = 0; j < N; j++) shapes.push_back(grid[i][j].getDrawable());
 
-	findPath(grid, N);
+	findPath(1, 1, grid, N);
 
 	animation.animate(shapes);
 
