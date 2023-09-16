@@ -4,7 +4,6 @@
 #include <unordered_set>
 #include <iostream>
 #include "cell.hpp"
-
 #ifndef UTILITIES_H
 #define UTILITIES_H
 
@@ -113,10 +112,13 @@ void findPath(int i, int j, Cell** grid, int n) {
         cout << "NOT EXISTS";
         return;
     }
-
+    
     for (int i = 0; i < path.size(); i++) {
+        sleep(sf::milliseconds(10));
         path[i]->shape->setFillColor(sf::Color::Green);
     }
+    
+    
 }
 
 #endif // UTILITIES_H
