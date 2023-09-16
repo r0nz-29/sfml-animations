@@ -4,7 +4,6 @@
 #include <unordered_set>
 #include <iostream>
 #include "cell.hpp"
-
 #ifndef UTILITIES_H
 #define UTILITIES_H
 
@@ -19,7 +18,7 @@ int randomNumber(int min, int max) {
 
 Cell** createGrid(int n, int num_obs) {
     std::unordered_map<int, int> MAP;
-    Cell** grid = new Cell*[n];
+    Cell** grid = new Cell * [n];
     int obs = 0;
 
     for (int i = 0; i < n; i++) {
@@ -39,7 +38,7 @@ Cell** createGrid(int n, int num_obs) {
             i >= n - 1 ||
             j >= n - 1 ||
             (MAP.count(i) > 0 && MAP[i] == j)
-        );
+            );
 
         grid[i][j].shape->setFillColor(sf::Color::Black);
 
@@ -115,8 +114,11 @@ void findPath(int i, int j, Cell** grid, int n) {
     }
 
     for (int i = 0; i < path.size(); i++) {
+        sleep(sf::milliseconds(10));
         path[i]->shape->setFillColor(sf::Color::Green);
     }
+
+
 }
 
 #endif // UTILITIES_H
