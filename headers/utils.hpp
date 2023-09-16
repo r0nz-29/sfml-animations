@@ -35,8 +35,8 @@ Cell** createGrid(int n, int num_obs) {
             j = randomNumber(0, n);
         } while (
             (i == 0 && j == 0) ||
-            i >= n - 1 ||
-            j >= n - 1 ||
+            i > n - 1 ||
+            j > n - 1 ||
             (MAP.count(i) > 0 && MAP[i] == j)
             );
 
@@ -54,12 +54,9 @@ vector<Cell*> colorPath(int i, int j, Cell** grid, int n, unordered_map<int, uno
     if (MAP.count(i) > 0 && MAP[i].find(j) != MAP[i].end()) return memo[i][j];
     if (grid[i][j].shape->getFillColor() == sf::Color::Black) return {};
 
-    grid[i][j].shape->setFillColor(sf::Color::Red);
-    sleep(sf::milliseconds(10));
     if (i == n - 1 && j == n - 1) {
         vector<Cell*> path = {};
         path.push_back(&grid[i][j]);
-        grid[i][j].shape->setFillColor(sf::Color::Green);
         return path;
     }
 
@@ -71,42 +68,32 @@ vector<Cell*> colorPath(int i, int j, Cell** grid, int n, unordered_map<int, uno
     vector<Cell*> topResult = colorPath(i - 1, j, grid, n, MAP, memo);
 
     if (!rightResult.empty()) {
-        sleep(sf::milliseconds(10));
         rightResult.push_back(&grid[i][j]);
         memo[i][j] = rightResult;
-        grid[i][j].shape->setFillColor(sf::Color::Green);
         return rightResult;
     }
 
     if (!bottomResult.empty()) {
-        sleep(sf::milliseconds(10));
         bottomResult.push_back(&grid[i][j]);
         memo[i][j] = bottomResult;
-        grid[i][j].shape->setFillColor(sf::Color::Green);
         return bottomResult;
     }
 
     if (!topResult.empty()) {
-        sleep(sf::milliseconds(10));
         topResult.push_back(&grid[i][j]);
         memo[i][j] = topResult;
-        grid[i][j].shape->setFillColor(sf::Color::Green);
         return topResult;
     }
 
     if (!leftResult.empty()) {
-        sleep(sf::milliseconds(10));
         leftResult.push_back(&grid[i][j]);
         memo[i][j] = leftResult;
-        grid[i][j].shape->setFillColor(sf::Color::Green);
         return leftResult;
     }
-    sleep(sf::milliseconds(10));
-    grid[i][j].shape->setFillColor(sf::Color::White);
+
     memo[i][j] = {};
     return {};
 }
-
 
 void findPath(int i, int j, Cell** grid, int n) {
     unordered_map<int, unordered_set<int>> MAP;
@@ -125,7 +112,10 @@ void findPath(int i, int j, Cell** grid, int n) {
         return;
     }
 
-
+    for (int k = path.size()-1; k >= 0; k--) {
+        sleep(sf::milliseconds(10));
+        path[k]->shape->setFillColor(sf::Color::Green);
+    }
 }
 
 #endif // UTILITIES_H

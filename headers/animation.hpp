@@ -15,7 +15,10 @@ public:
 		window->setFramerateLimit(60);
 	}
 
-	void animate(std::vector<Drawable*>& drawables) const {
+    virtual void draw(RenderWindow* window, Event e) = 0;
+    virtual void start() = 0;
+
+	void animate() {
 		while (window->isOpen()) {
 			Event event;
 			while (window->pollEvent(event)) {
@@ -23,18 +26,17 @@ public:
 					window->close();
 			}
 
-			window->clear(Color(60, 60, 60));
-
-			for (const auto shape : drawables)
-				window->draw(*shape);
-
-			window->display();
+            draw(window, event);
 		}
 	}
 
 	~Animation() {
-		delete this->window;
+        destroy();
 	}
+
+    void destroy() const {
+        delete this->window;
+    }
 };
 
 #endif // ANIMATION_HPP

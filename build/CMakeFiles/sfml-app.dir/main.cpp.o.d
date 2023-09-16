@@ -1,5 +1,6 @@
 CMakeFiles/sfml-app.dir/main.cpp.o: \
  /home/raunits/_clones/sfml-demo/main.cpp /usr/include/stdc-predef.h \
+ /home/raunits/_clones/sfml-demo/headers/demos/pathfinder.hpp \
  /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
  /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
  /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
@@ -238,10 +239,15 @@ CMakeFiles/sfml-app.dir/main.cpp.o: \
  /usr/include/SFML/Graphics/Glsl.hpp /usr/include/SFML/Graphics/Glsl.inl \
  /usr/include/SFML/Graphics/Sprite.hpp \
  /usr/include/SFML/Graphics/Text.hpp \
- /usr/include/SFML/Graphics/VertexBuffer.hpp \
- /home/raunits/_clones/sfml-demo/animation.hpp \
- /home/raunits/_clones/sfml-demo/utils.hpp /usr/include/c++/11/random \
- /usr/include/c++/11/cmath /usr/include/math.h \
+ /usr/include/SFML/Graphics/VertexBuffer.hpp /usr/include/c++/11/thread \
+ /usr/include/c++/11/bits/std_thread.h \
+ /usr/include/c++/11/bits/this_thread_sleep.h /usr/include/c++/11/chrono \
+ /usr/include/c++/11/ratio /usr/include/c++/11/limits \
+ /usr/include/c++/11/bits/parse_numbers.h \
+ /home/raunits/_clones/sfml-demo/headers/demos/../animation.hpp \
+ /home/raunits/_clones/sfml-demo/headers/demos/../cell.hpp \
+ /home/raunits/_clones/sfml-demo/headers/demos/../utils.hpp \
+ /usr/include/c++/11/random /usr/include/c++/11/cmath /usr/include/math.h \
  /usr/include/x86_64-linux-gnu/bits/math-vector.h \
  /usr/include/x86_64-linux-gnu/bits/libm-simd-decl-stubs.h \
  /usr/include/x86_64-linux-gnu/bits/flt-eval-method.h \
@@ -251,8 +257,7 @@ CMakeFiles/sfml-app.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /usr/include/c++/11/bits/specfun.h /usr/include/c++/11/limits \
- /usr/include/c++/11/tr1/gamma.tcc \
+ /usr/include/c++/11/bits/specfun.h /usr/include/c++/11/tr1/gamma.tcc \
  /usr/include/c++/11/tr1/special_function_util.h \
  /usr/include/c++/11/tr1/bessel_function.tcc \
  /usr/include/c++/11/tr1/beta_function.tcc \
@@ -272,7 +277,4 @@ CMakeFiles/sfml-app.dir/main.cpp.o: \
  /usr/include/c++/11/unordered_set \
  /usr/include/c++/11/bits/unordered_set.h /usr/include/c++/11/iostream \
  /usr/include/c++/11/istream /usr/include/c++/11/bits/istream.tcc \
- /home/raunits/_clones/sfml-demo/cell.hpp /usr/include/c++/11/thread \
- /usr/include/c++/11/bits/std_thread.h \
- /usr/include/c++/11/bits/this_thread_sleep.h /usr/include/c++/11/chrono \
- /usr/include/c++/11/ratio /usr/include/c++/11/bits/parse_numbers.h
+ /home/raunits/_clones/sfml-demo/headers/demos/../cell.hpp

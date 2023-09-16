@@ -145,7 +145,7 @@ CMAKE_PROJECT_DESCRIPTION:STATIC=
 CMAKE_PROJECT_HOMEPAGE_URL:STATIC=
 
 //Value Computed by CMake
-CMAKE_PROJECT_NAME:STATIC=untitled1
+CMAKE_PROJECT_NAME:STATIC=sfml-demo
 
 //Path to a program.
 CMAKE_RANLIB:FILEPATH=/usr/bin/ranlib
@@ -216,13 +216,13 @@ SFML_DIR:PATH=/usr/lib/x86_64-linux-gnu/cmake/SFML
 SFML_DOC_DIR:PATH=SFML_DOC_DIR-NOTFOUND
 
 //Value Computed by CMake
-untitled1_BINARY_DIR:STATIC=/home/raunits/_clones/sfml-demo/build
+sfml-demo_BINARY_DIR:STATIC=/home/raunits/_clones/sfml-demo/build
 
 //Value Computed by CMake
-untitled1_IS_TOP_LEVEL:STATIC=ON
+sfml-demo_IS_TOP_LEVEL:STATIC=ON
 
 //Value Computed by CMake
-untitled1_SOURCE_DIR:STATIC=/home/raunits/_clones/sfml-demo
+sfml-demo_SOURCE_DIR:STATIC=/home/raunits/_clones/sfml-demo
 
 
 ########################
