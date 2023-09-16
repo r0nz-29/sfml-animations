@@ -1,0 +1,19 @@
+cmake_minimum_required(VERSION 3.20)
+project(untitled1)
+
+set(CMAKE_CXX_STANDARD 17)
+
+# Find the SFML library
+find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
+
+# Add your source files
+add_executable(sfml-app main.cpp)
+
+# Link SFML libraries to your executable
+target_link_libraries(sfml-app sfml-graphics sfml-window sfml-system)
+
+#add_executable(cpp_animations
+#        animation.hpp
+#        cell.hpp
+#        main.cpp
+#        utils.hpp)

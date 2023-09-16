@@ -1,0 +1,3 @@
+/home/raunits/_clones/sfml-demo/build/CMakeFiles/sfml-app.dir
+/home/raunits/_clones/sfml-demo/build/CMakeFiles/edit_cache.dir
+/home/raunits/_clones/sfml-demo/build/CMakeFiles/rebuild_cache.dir
