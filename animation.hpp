@@ -15,7 +15,7 @@ public:
 		window->setFramerateLimit(60);
 	}
 
-	void animate(std::vector<Drawable*>& drawables) {
+	void animate(std::vector<Drawable*>& drawables) const {
 		while (window->isOpen()) {
 			Event event;
 			while (window->pollEvent(event)) {

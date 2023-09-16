@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(untitled1)
+project(sfml-demo)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -11,9 +11,3 @@ add_executable(sfml-app main.cpp)
 
 # Link SFML libraries to your executable
 target_link_libraries(sfml-app sfml-graphics sfml-window sfml-system)
-
-#add_executable(cpp_animations
-#        animation.hpp
-#        cell.hpp
-#        main.cpp
-#        utils.hpp)
