@@ -4,11 +4,15 @@
 #include <unordered_set>
 #include <iostream>
 #include "cell.hpp"
+#include "stack"
 #ifndef UTILITIES_H
 #define UTILITIES_H
 
 using namespace std;
-
+struct recurence {
+    pair<int, int> pos;
+    vector<Cell*> path;
+};
 int randomNumber(int min, int max) {
     std::random_device rd;
     std::mt19937 gen(rd());
@@ -35,8 +39,8 @@ Cell** createGrid(int n, int num_obs) {
             j = randomNumber(0, n);
         } while (
             (i == 0 && j == 0) ||
-            i >= n - 1 ||
-            j >= n - 1 ||
+            i > n - 1 ||
+            j > n - 1 ||
             (MAP.count(i) > 0 && MAP[i] == j)
             );
 
@@ -113,10 +117,11 @@ void findPath(int i, int j, Cell** grid, int n) {
     vector<vector<vector<Cell*>>> memo(n, vector<vector<Cell*>>(n));
 
     if (grid[i][j].shape->getFillColor() == sf::Color::Black) {
-        cout << "NOT EXISTS";
+        std::cout << "NOT EXISTS";
         return;
     }
 
+    /*
     //vector<Cell*> path = colorPath(0, 0, grid, n, MAP, memo);
     vector<Cell*> path = colorPath(i, j, grid, n, MAP, memo);
 
@@ -124,6 +129,48 @@ void findPath(int i, int j, Cell** grid, int n) {
         cout << "NOT EXISTS";
         return;
     }
+    */
+    std::stack<recurence> s;
+    vector<Cell*> path = {};
+    recurence x;
+    x.pos = { i,j };
+    x.path = path;
+    s.push(x);
+
+    while (!s.empty()) {
+        int i = s.top().pos.first;
+        int j = s.top().pos.second;
+        vector<Cell*> curr_path = s.top().path;
+        s.pop();
+        if (i < 0 || j < 0 || i >= n || j >= n) continue;
+        if (MAP.count(i) > 0 && MAP[i].find(j) != MAP[i].end()) continue;
+        if (grid[i][j].shape->getFillColor() == sf::Color::Black) continue;
+        grid[i][j].shape->setFillColor(sf::Color::Red);
+        sleep(sf::milliseconds(10));
+        if (i == n - 1 && j == n - 1) {
+            curr_path.push_back(&grid[i][j]);
+            for (int i = curr_path.size() - 1;i >= 0;i--) curr_path[i]->shape->setFillColor(sf::Color::Green);
+            return;
+        }
+        MAP[i].insert(j);
+        curr_path.push_back(&grid[i][j]);
+        recurence r;
+        r.pos = { i,j };
+        r.path = curr_path;
+        r.pos.first -= 1;
+        s.push(r);
+        r.pos.first += 2;
+        s.push(r);
+        r.pos.first -= 1;
+        r.pos.second -= 1;
+        s.push(r);
+        r.pos.second += 2;
+        s.push(r);
+        sleep(sf::milliseconds(10));
+        grid[i][j].shape->setFillColor(sf::Color::White);
+
+    }
+    std::cout << "NOT exist" << endl;
 
 
 }
