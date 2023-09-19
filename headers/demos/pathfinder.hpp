@@ -8,8 +8,7 @@
 #include "../cell.hpp"
 #include "../utils.hpp"
 
-#define N 30
-#define NUM_OBSTACLES 100
+#define NUM_OBSTACLES 10000
 
 using namespace sf;
 
