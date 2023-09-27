@@ -20,10 +20,39 @@ int randomNumber(int min, int max) {
     return dist(gen);
 }
 
+std::unordered_map<int, int> MAP;
+int obs = 0;
+
+void gen_obs(Cell** grid, int i, int j, int curr_depth) {
+    if (curr_depth > 5 || i < 0 || j < 0 || i >= N || j >= N || MAP.count(i) > 0 && MAP[i] == j) return;
+
+    MAP[i] = j;
+    grid[i][j].shape->setFillColor(sf::Color::White);
+
+    if (rand() > rand()) gen_obs(grid, i-1, j, curr_depth + 1);
+    if (rand() > rand()) gen_obs(grid, i, j+1, curr_depth + 1);
+    if (rand() > rand()) gen_obs(grid, i+1, j, curr_depth + 1);
+    if (rand() > rand()) gen_obs(grid, i, j-1, curr_depth + 1);
+}
+
+void createObstacles(Cell** grid, int n, int num_obs) {
+    gen_obs(grid, n-1, n-1, 0);
+    while (obs < num_obs) {
+        int i=0, j=0;
+
+        while ((MAP.count(i) > 0 && MAP[i] == j)) {
+            i = randomNumber(0, n);
+            j = randomNumber(0, n);
+        }
+
+        gen_obs(grid, i, j, 0);
+        obs++;
+    }
+}
+
+
 Cell** createGrid(int n, int num_obs) {
-    std::unordered_map<int, int> MAP;
     Cell** grid = new Cell * [n];
-    int obs = 0;
 
     for (int i = 0; i < n; i++) {
         grid[i] = new Cell[n];
@@ -31,28 +60,10 @@ Cell** createGrid(int n, int num_obs) {
             grid[i][j] = Cell(i * Cell::size, j * Cell::size);
     }
 
-    while (obs < num_obs) {
-        int i, j;
-
-        do {
-            i = randomNumber(0, n);
-            j = randomNumber(0, n);
-        } while (
-            (i == 0 && j == 0) ||
-            i > n - 1 ||
-            j > n - 1 ||
-            (MAP.count(i) > 0 && MAP[i] == j)
-            );
-
-        grid[i][j].shape->setFillColor(sf::Color::Black);
-
-        MAP[i] = j;
-        obs++;
-    }
+    createObstacles(grid, n, num_obs);
 
     return grid;
 }
-
 
 vector<Cell*> colorPath(int i, int j, Cell** grid, int n, bool** visited, vector<vector<vector<Cell*>>>& memo) {
     if (i < 0 || j < 0 || i >= n || j >= n) return {};
@@ -122,7 +133,7 @@ void findPath(int x, int y, Cell** grid, int n) {
 
     for (int k = path.size()-1; k >= 0; k--) {
         sleep(sf::milliseconds(10));
-        path[k]->shape->setFillColor(sf::Color::Green);
+        path[k]->shape->setFillColor(sf::Color::Blue);
     }
 }
 

@@ -16,7 +16,7 @@ public:
 
 	Cell(int x, int y) {
 		shape = new RectangleShape(Vector2f(size, size));
-		shape->setFillColor(Color::White);
+		shape->setFillColor(Color::Black);
 		shape->setPosition(x, y);
 	}
 
